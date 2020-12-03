@@ -46,4 +46,10 @@ class PreferencesHelper @Inject constructor(context: Context) {
         editor.clear()
         editor.apply()
     }
+
+    val token: String
+        get() {
+            return get(ACCESS_TOKEN)
+        }
+
 }

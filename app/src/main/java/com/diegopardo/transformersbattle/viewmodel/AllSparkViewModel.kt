@@ -8,20 +8,20 @@ import com.diegopardo.transformersbattle.utils.PreferencesHelper
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AllSparkViewModel  @Inject constructor(
-    private val allSparkRepository: AllSparkRepository,
-    private val preferencesHelper: PreferencesHelper,
-) : ViewModel() {
-
-    fun getAllSpark() {
-        viewModelScope.launch {
-            val token = allSparkRepository.getAllSpark()
-            if (!token.isNullOrEmpty()) {
-                preferencesHelper.save(ACCESS_TOKEN, token)
-            } else {
-                preferencesHelper.clearSharedPrefs()
-                // TODO: Inform user about error
-            }
-        }
-    }
-}
+//class AllSparkViewModel  @Inject constructor(
+//    private val allSparkRepository: AllSparkRepository,
+//    private val preferencesHelper: PreferencesHelper,
+//) : ViewModel() {
+//
+//    fun getAllSpark() {
+//        viewModelScope.launch {
+//            val token = allSparkRepository.getAllSpark()
+//            if (!token.isNullOrEmpty()) {
+//                preferencesHelper.save(ACCESS_TOKEN, token)
+//            } else {
+//                preferencesHelper.clearSharedPrefs()
+//                // TODO: Inform user about error
+//            }
+//        }
+//    }
+//}

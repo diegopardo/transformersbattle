@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.diegopardo.transformersbattle.R
 import com.diegopardo.transformersbattle.application.TransformersBattleApp
 import com.diegopardo.transformersbattle.di.viewmodel.ViewModelFactory
-import com.diegopardo.transformersbattle.viewmodel.AllSparkViewModel
+import com.diegopardo.transformersbattle.viewmodel.TransformersViewModel
 import javax.inject.Inject
 
 class MainFragment : Fragment() {
@@ -22,8 +22,8 @@ class MainFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory).get(AllSparkViewModel::class.java)
+    private val transformersViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(TransformersViewModel::class.java)
     }
 
     override fun onAttach(context: Context) {
@@ -40,7 +40,7 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.getAllSpark()
+        transformersViewModel.getTransformers()
     }
 
 }

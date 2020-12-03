@@ -9,13 +9,13 @@ import javax.inject.Singleton
 class AllSparkRepository @Inject constructor(
         private val allSparkService: AllSparkService,
 ) {
-    suspend fun getAllSpark(): String? {
-        val getAllSparkCall = allSparkService.getAllSpark()
-        getAllSparkCall.let {
-            if (it.code() == HttpURLConnection.HTTP_OK) {
-                return it.body()
-            }
-        }
-        return null
-    }
+//    suspend fun getAllSpark(): String? {
+//        val getAllSparkCall = allSparkService.getAllSpark()
+//        getAllSparkCall.let {
+//            if (it.code() == HttpURLConnection.HTTP_OK) {
+//                return it.body()
+//            }
+//        }
+//        return null
+//    }
 }
