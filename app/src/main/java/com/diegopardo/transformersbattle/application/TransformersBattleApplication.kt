@@ -7,7 +7,7 @@ import com.diegopardo.transformersbattle.di.component.DaggerAppComponent
 import com.diegopardo.transformersbattle.di.module.AppModule
 import com.facebook.stetho.Stetho
 
-open class TransformersBattleApp : Application() {
+open class TransformersBattleApplication : Application() {
 
     val appComponent: AppComponent by lazy {
         initializeComponent()

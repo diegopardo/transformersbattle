@@ -3,7 +3,7 @@ package com.diegopardo.transformersbattle.di.module
 import com.diegopardo.transformersbattle.BuildConfig
 import com.diegopardo.transformersbattle.api.service.AllSparkService
 import com.diegopardo.transformersbattle.api.service.TransformersService
-import com.diegopardo.transformersbattle.interceptor.AuthInterceptor
+import com.diegopardo.transformersbattle.api.interceptor.AuthInterceptor
 import com.diegopardo.transformersbattle.utils.BASE_URL
 import com.diegopardo.transformersbattle.utils.PreferencesHelper
 import com.facebook.stetho.okhttp3.StethoInterceptor
@@ -16,7 +16,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
 
-//@Module(includes = [AppModule::class])
 @Module
 class ApiModule {
 

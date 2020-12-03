@@ -1,4 +1,4 @@
-package com.diegopardo.transformersbattle.interceptor
+package com.diegopardo.transformersbattle.api.interceptor
 
 import com.diegopardo.transformersbattle.api.service.AllSparkService
 import com.diegopardo.transformersbattle.utils.ACCESS_TOKEN

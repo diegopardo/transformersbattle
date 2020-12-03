@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.diegopardo.transformersbattle.R
-import com.diegopardo.transformersbattle.application.TransformersBattleApp
+import com.diegopardo.transformersbattle.application.TransformersBattleApplication
 import com.diegopardo.transformersbattle.di.viewmodel.ViewModelFactory
 import com.diegopardo.transformersbattle.viewmodel.TransformersViewModel
 import javax.inject.Inject
@@ -27,7 +27,7 @@ class MainFragment : Fragment() {
     }
 
     override fun onAttach(context: Context) {
-        (context.applicationContext as TransformersBattleApp).appComponent.contentComponent().create()
+        (context.applicationContext as TransformersBattleApplication).appComponent.contentComponent().create()
             .inject(this)
 
         super.onAttach(context)
