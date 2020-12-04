@@ -44,7 +44,9 @@ class TransformersViewModel  @Inject constructor(
         viewModelScope.launch {
             val transformer = transformersRepository.updateTransformer(transformer)
             transformer?.let {
-                transformerList.value?.add(transformer)
+                transformerList.value?.apply {
+                    set(indexOf(it), it)
+                }
                 updatedTransformer.postValue(transformer)
             } ?: run {
                 // TODO: Inform user about error

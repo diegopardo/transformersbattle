@@ -66,10 +66,10 @@ class TransformersFragment : Fragment(), TransformersAdapter.OnItemClickListener
             updateUI(it)
         })
         transformersViewModel.newTransformer.observe(viewLifecycleOwner, {
-            updateUI(it)
+            (binding.transformersRecyclerView.adapter as TransformersAdapter).notifyTransformerInserted()
         })
         transformersViewModel.updatedTransformer.observe(viewLifecycleOwner, {
-
+            (binding.transformersRecyclerView.adapter as TransformersAdapter).notifyTransformerUpdated(it)
         })
     }
 
@@ -79,10 +79,6 @@ class TransformersFragment : Fragment(), TransformersAdapter.OnItemClickListener
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = transformersAdapter
         }
-    }
-
-    private fun updateUI(transformer: Transformer) {
-        (binding.transformersRecyclerView.adapter as TransformersAdapter).addTransformer(transformer)
     }
 
     override fun onItemClicked(transformer: Transformer) {

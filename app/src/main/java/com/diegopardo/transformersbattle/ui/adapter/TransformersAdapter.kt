@@ -42,9 +42,12 @@ class TransformersAdapter(
 
     override fun getItemCount() = transformerList.size
 
-    fun addTransformer(transformer: Transformer) {
-        transformerList.add(transformer)
-        notifyItemInserted(transformerList.size)
+    fun notifyTransformerInserted() {
+        notifyItemInserted(transformerList.size - 1)
+    }
+
+    fun notifyTransformerUpdated(transformer: Transformer) {
+        notifyItemChanged(transformerList.indexOf(transformer))
     }
 
     interface OnItemClickListener {
