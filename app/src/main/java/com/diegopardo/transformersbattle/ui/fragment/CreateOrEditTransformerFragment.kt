@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.diegopardo.transformersbattle.application.TransformersBattleApplication
@@ -26,7 +27,7 @@ class CreateOrEditTransformerFragment : DialogFragment() {
     lateinit var viewModelFactory: ViewModelFactory
 
     private val transformersViewModel by lazy {
-        ViewModelProvider(this, viewModelFactory).get(TransformersViewModel::class.java)
+        ViewModelProvider(activity as AppCompatActivity, viewModelFactory).get(TransformersViewModel::class.java)
     }
 
     private lateinit var binding: FragmentCreateOrEditTransformerBinding
@@ -56,7 +57,7 @@ class CreateOrEditTransformerFragment : DialogFragment() {
             val transformer = TransformerDTO(
                 id = null,
                 name = binding.createOrEditName.text.toString(),
-                team = if (binding.createOrEditTeamAutobots.isChecked) "A" else "B",
+                team = if (binding.createOrEditTeamAutobots.isChecked) "A" else "D",
                 strength = binding.createOrEditStrength.value.roundToInt(),
                 intelligence = binding.createOrEditIntelligence.value.roundToInt(),
                 speed = binding.createOrEditSpeed.value.roundToInt(),

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +28,7 @@ class TransformersFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelFactory
 
     private val transformersViewModel by lazy {
-        ViewModelProvider(this, viewModelFactory).get(TransformersViewModel::class.java)
+        ViewModelProvider(activity as AppCompatActivity, viewModelFactory).get(TransformersViewModel::class.java)
     }
 
     private lateinit var binding: FragmentTransformersBinding
