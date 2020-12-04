@@ -5,16 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SimpleAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.diegopardo.transformersbattle.application.TransformersBattleApplication
 import com.diegopardo.transformersbattle.databinding.FragmentTransformersBinding
 import com.diegopardo.transformersbattle.di.viewmodel.ViewModelFactory
 import com.diegopardo.transformersbattle.model.pojo.Transformer
+import com.diegopardo.transformersbattle.ui.adapter.SwipeToDeleteCallback
 import com.diegopardo.transformersbattle.ui.adapter.TransformersAdapter
 import com.diegopardo.transformersbattle.ui.viewmodel.TransformersViewModel
 import com.diegopardo.transformersbattle.utils.ARG_TRANSFORMER
@@ -61,6 +64,8 @@ class TransformersFragment : Fragment(), TransformersAdapter.OnItemClickListener
         transformersViewModel.getTransformers()
     }
 
+    private var swipedPosition: Int = -1
+
     private fun initObservers() {
         transformersViewModel.transformerList.observe(viewLifecycleOwner, {
             updateUI(it)
@@ -72,7 +77,7 @@ class TransformersFragment : Fragment(), TransformersAdapter.OnItemClickListener
             (binding.transformersRecyclerView.adapter as TransformersAdapter).notifyTransformerUpdated(it)
         })
         transformersViewModel.deletedTransformer.observe(viewLifecycleOwner, {
-            //(binding.transformersRecyclerView.adapter as TransformersAdapter).notifyTransformerDeleted(swipedPosition)
+            (binding.transformersRecyclerView.adapter as TransformersAdapter).notifyTransformerDeleted(swipedPosition)
         })
     }
 
@@ -81,6 +86,15 @@ class TransformersFragment : Fragment(), TransformersAdapter.OnItemClickListener
         binding.transformersRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = transformersAdapter
+            val swipeHandler = object : SwipeToDeleteCallback(context) {
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    swipedPosition = viewHolder.adapterPosition
+                    val transformerId = (viewHolder as TransformersAdapter.ViewHolder).transformerId
+                    transformersViewModel.deleteTransformer(transformerId)
+                }
+            }
+            val itemTouchHelper = ItemTouchHelper(swipeHandler)
+            itemTouchHelper.attachToRecyclerView(this)
         }
     }
 

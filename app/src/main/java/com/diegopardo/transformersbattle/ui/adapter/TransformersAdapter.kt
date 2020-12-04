@@ -1,6 +1,7 @@
 package com.diegopardo.transformersbattle.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,8 +13,11 @@ class TransformersAdapter(
     private val onItemClickListener: OnItemClickListener,
 ) : RecyclerView.Adapter<TransformersAdapter.ViewHolder>() {
 
-    class ViewHolder(val binding: RecyclerViewItemTransformerBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: RecyclerViewItemTransformerBinding) : RecyclerView.ViewHolder(
+        binding.root
+    ) {
+        var transformerId: String = ""
+    }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val binding = RecyclerViewItemTransformerBinding.inflate(
@@ -38,6 +42,7 @@ class TransformersAdapter(
         viewHolder.binding.root.setOnClickListener {
             onItemClickListener.onItemClicked(transformer)
         }
+        viewHolder.transformerId = transformer.id.toString()
     }
 
     override fun getItemCount() = transformerList.size
