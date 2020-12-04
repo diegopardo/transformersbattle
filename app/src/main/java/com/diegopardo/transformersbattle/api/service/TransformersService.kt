@@ -20,5 +20,5 @@ interface TransformersService {
     suspend fun getTransformer()
 
     @DELETE("/transformers/{transformerId}")
-    suspend fun deleteTransformer()
+    suspend fun deleteTransformer(@Path("transformerId") transformerId: String): Response<Void>
 }

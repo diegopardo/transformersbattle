@@ -50,6 +50,10 @@ class TransformersAdapter(
         notifyItemChanged(transformerList.indexOf(transformer))
     }
 
+    fun notifyTransformerDeleted(position: Int) {
+        notifyItemRemoved(position)
+    }
+
     interface OnItemClickListener {
         fun onItemClicked(transformer: Transformer)
     }

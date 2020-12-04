@@ -71,5 +71,20 @@ data class Transformer(
         override fun newArray(size: Int): Array<Transformer?> {
             return arrayOfNulls(size)
         }
+
+        fun newEmptyInstanceWithId(transformerId: String): Transformer = Transformer(
+            transformerId,
+            "",
+            "",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            ""
+        )
     }
 }

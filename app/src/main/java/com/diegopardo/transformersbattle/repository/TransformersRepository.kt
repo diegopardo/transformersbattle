@@ -36,4 +36,9 @@ class TransformersRepository @Inject constructor(
             null
         }
     }
+
+    suspend fun deleteTransformer(transformerId: String): Boolean {
+        val response = transformersService.deleteTransformer(transformerId)
+        return response.code() == HttpURLConnection.HTTP_NO_CONTENT
+    }
 }

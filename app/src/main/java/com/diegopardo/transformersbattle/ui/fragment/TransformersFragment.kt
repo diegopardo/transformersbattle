@@ -71,6 +71,9 @@ class TransformersFragment : Fragment(), TransformersAdapter.OnItemClickListener
         transformersViewModel.updatedTransformer.observe(viewLifecycleOwner, {
             (binding.transformersRecyclerView.adapter as TransformersAdapter).notifyTransformerUpdated(it)
         })
+        transformersViewModel.deletedTransformer.observe(viewLifecycleOwner, {
+            //(binding.transformersRecyclerView.adapter as TransformersAdapter).notifyTransformerDeleted(swipedPosition)
+        })
     }
 
     private fun updateUI(transformerList: List<Transformer>) {

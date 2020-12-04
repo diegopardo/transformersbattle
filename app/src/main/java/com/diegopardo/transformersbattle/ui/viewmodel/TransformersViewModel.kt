@@ -16,6 +16,7 @@ class TransformersViewModel  @Inject constructor(
     var transformerList: MutableLiveData<ArrayList<Transformer>> = MutableLiveData()
     var newTransformer: MutableLiveData<Transformer> = MutableLiveData()
     var updatedTransformer: MutableLiveData<Transformer> = MutableLiveData()
+    var deletedTransformer: MutableLiveData<Transformer> = MutableLiveData()
 
     fun getTransformers() {
         viewModelScope.launch {
@@ -49,6 +50,19 @@ class TransformersViewModel  @Inject constructor(
                 }
                 updatedTransformer.postValue(transformer)
             } ?: run {
+                // TODO: Inform user about error
+            }
+        }
+    }
+
+    fun deleteTransformer(transformerId: String) {
+        viewModelScope.launch {
+            val deleted = transformersRepository.deleteTransformer(transformerId)
+            if (deleted) {
+                val transformer = Transformer.newEmptyInstanceWithId(transformerId)
+                transformerList.value?.remove(transformer)
+                deletedTransformer.postValue(transformer)
+            } else {
                 // TODO: Inform user about error
             }
         }

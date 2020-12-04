@@ -1,6 +1,7 @@
 package com.diegopardo.transformersbattle.model.dto
 
 import com.diegopardo.transformersbattle.model.pojo.Transformer
+import com.diegopardo.transformersbattle.ui.fragment.TransformersFragment
 
 data class TransformerDTO(
     val id: String?,
