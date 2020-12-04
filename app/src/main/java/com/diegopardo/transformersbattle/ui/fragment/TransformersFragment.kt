@@ -59,6 +59,12 @@ class TransformersFragment : Fragment() {
         transformersViewModel.transformerList.observe(viewLifecycleOwner, {
             updateUI(it)
         })
+        transformersViewModel.newTransformer.observe(viewLifecycleOwner, {
+            updateUI(it)
+        })
+        transformersViewModel.updatedTransformer.observe(viewLifecycleOwner, {
+
+        })
     }
 
     private fun updateUI(transformerList: List<Transformer>) {
@@ -67,5 +73,9 @@ class TransformersFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = transformersAdapter
         }
+    }
+
+    private fun updateUI(transformer: Transformer) {
+        (binding.transformersRecyclerView.adapter as TransformersAdapter).addTransformer(transformer)
     }
 }

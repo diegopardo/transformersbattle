@@ -3,7 +3,7 @@ package com.diegopardo.transformersbattle.model.dto
 import com.diegopardo.transformersbattle.model.pojo.Transformer
 
 data class TransformerDTO(
-    val id: String,
+    val id: String?,
     val name: String,
     val team: String,
     val strength: Int,
@@ -14,7 +14,7 @@ data class TransformerDTO(
     val courage: Int,
     val firepower: Int,
     val skill: Int,
-    val team_icon: String,
+    val team_icon: String?,
 ) {
     fun toTransformer(): Transformer {
         return Transformer(

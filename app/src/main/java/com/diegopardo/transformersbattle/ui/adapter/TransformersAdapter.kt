@@ -1,13 +1,11 @@
 package com.diegopardo.transformersbattle.ui.adapter
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.diegopardo.transformersbattle.databinding.RecyclerViewItemTransformerBinding
 import com.diegopardo.transformersbattle.model.pojo.Transformer
-import com.squareup.picasso.Picasso
 
 class TransformersAdapter(private val transformerList: MutableList<Transformer>) :
     RecyclerView.Adapter<TransformersAdapter.ViewHolder>() {
@@ -40,5 +38,10 @@ class TransformersAdapter(private val transformerList: MutableList<Transformer>)
     }
 
     override fun getItemCount() = transformerList.size
+
+    fun addTransformer(transformer: Transformer) {
+        transformerList.add(transformer)
+        notifyItemInserted(transformerList.size)
+    }
 
 }

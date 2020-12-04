@@ -1,11 +1,9 @@
 package com.diegopardo.transformersbattle.api.service
 
+import com.diegopardo.transformersbattle.model.dto.TransformerDTO
 import com.diegopardo.transformersbattle.model.dto.Transformers
 import retrofit2.Response
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface TransformersService {
 
@@ -13,10 +11,10 @@ interface TransformersService {
     suspend fun getTransformers(): Response<Transformers>
 
     @POST("/transformers")
-    suspend fun createTransformer()
+    suspend fun createTransformer(@Body transformer: TransformerDTO): Response<TransformerDTO>
 
     @PUT("/transformers")
-    suspend fun updateTransformer()
+    suspend fun updateTransformer(@Body transformer: TransformerDTO): Response<TransformerDTO>
 
     @GET("/transformers/{transformerId}")
     suspend fun getTransformer()

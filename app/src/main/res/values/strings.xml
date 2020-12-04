@@ -4,10 +4,17 @@
     <string name="transformer_menu_action_add">Add transformer</string>
     <string name="transformer_menu_action_battle">Start a battle</string>
 
+    <string name="transformer_item_name">Name:</string>
+    <string name="transformer_item_team">Team:</string>
+    <string name="transformer_item_team_autobots">Autobots</string>
+    <string name="transformer_item_team_decepticons">Decepticons</string>
     <string name="transformer_item_overall_rating">Overall Rating:</string>
     <string name="transformer_item_strength">Strength:</string>
     <string name="transformer_item_intelligence">Intelligence:</string>
     <string name="transformer_item_speed">Speed:</string>
     <string name="transformer_item_endurance">Endurance:</string>
+    <string name="transformer_item_rank">Rank:</string>
+    <string name="transformer_item_courage">Courage:</string>
     <string name="transformer_item_firepower">Firepower:</string>
+    <string name="transformer_item_skill">Skill:</string>
 </resources>

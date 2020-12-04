@@ -1,7 +1,7 @@
 package com.diegopardo.transformersbattle.model.pojo
 
-class Transformer(
-    val id: String,
+data class Transformer(
+    val id: String?,
     val name: String,
     val team: String, //    TODO: change to enum
     val strength: Int,
@@ -12,7 +12,7 @@ class Transformer(
     val courage: Int,
     val firepower: Int,
     val skill: Int,
-    val team_icon: String,
+    val team_icon: String?,
 ) {
 //    enum class Team(val abbreviation: String) {
 //        AUTOBOT("A"),
@@ -20,4 +20,8 @@ class Transformer(
 //    }
 
     fun getOverallRating() = this.strength + this.intelligence + this.speed + this.endurance + this.firepower
+
+    override fun equals(other: Any?): Boolean {
+        return other is Transformer && id.equals(other.id)
+    }
 }
