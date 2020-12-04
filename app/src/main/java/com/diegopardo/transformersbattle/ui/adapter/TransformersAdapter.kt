@@ -24,10 +24,8 @@ class TransformersAdapter(private val transformerList: MutableList<Transformer>)
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val transformer = transformerList[position]
-        //Glide.with(viewHolder.binding.root.context).load(transformer.team_icon)
         Glide.with(viewHolder.binding.root.context).load(transformer.team_icon)
             .into(viewHolder.binding.transformerGroupIcon)
-        //Picasso.get().load(transformer.team_icon).into(viewHolder.binding.transformerGroupIcon)
         viewHolder.binding.transformerName.text = transformer.name
         viewHolder.binding.transformerOverallRating.text = transformer.getOverallRating().toString()
         viewHolder.binding.transformerStrength.text = transformer.strength.toString()
