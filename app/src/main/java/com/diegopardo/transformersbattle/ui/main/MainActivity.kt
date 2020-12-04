@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.fragment.app.FragmentTransaction
 import com.diegopardo.transformersbattle.R
 import com.diegopardo.transformersbattle.application.TransformersBattleApplication
 import com.diegopardo.transformersbattle.ui.fragment.BattleFragment
@@ -31,11 +30,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_add -> {
-//            supportFragmentManager.beginTransaction()
-//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                .replace(R.id.container, CreateOrEditTransformerFragment.newInstance())
-//                .addToBackStack(CreateOrEditTransformerFragment.tag())
-//                .commit()
             CreateOrEditTransformerFragment.newInstance()
                 .show(supportFragmentManager, CreateOrEditTransformerFragment.tag())
             true

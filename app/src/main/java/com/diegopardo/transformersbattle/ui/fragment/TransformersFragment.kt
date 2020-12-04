@@ -2,11 +2,12 @@ package com.diegopardo.transformersbattle.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +19,8 @@ import com.diegopardo.transformersbattle.ui.adapter.TransformersAdapter
 import com.diegopardo.transformersbattle.ui.viewmodel.TransformersViewModel
 import javax.inject.Inject
 
-class TransformersFragment : Fragment() {
+
+class TransformersFragment : Fragment(), TransformersAdapter.OnItemClickListener {
 
     companion object {
         fun newInstance() = TransformersFragment()
@@ -40,8 +42,10 @@ class TransformersFragment : Fragment() {
         super.onAttach(context)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentTransformersBinding.inflate(inflater)
         return binding.root
     }
@@ -69,7 +73,7 @@ class TransformersFragment : Fragment() {
     }
 
     private fun updateUI(transformerList: List<Transformer>) {
-        val transformersAdapter = TransformersAdapter(transformerList as MutableList<Transformer>)
+        val transformersAdapter = TransformersAdapter(transformerList as MutableList<Transformer>, this)
         binding.transformersRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = transformersAdapter
@@ -78,5 +82,10 @@ class TransformersFragment : Fragment() {
 
     private fun updateUI(transformer: Transformer) {
         (binding.transformersRecyclerView.adapter as TransformersAdapter).addTransformer(transformer)
+    }
+
+    override fun onItemClicked(transformer: Transformer) {
+        CreateOrEditTransformerFragment.newInstance()
+            .show(parentFragmentManager, CreateOrEditTransformerFragment.tag())
     }
 }

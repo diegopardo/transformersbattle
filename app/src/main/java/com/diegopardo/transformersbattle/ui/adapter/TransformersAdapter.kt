@@ -7,8 +7,10 @@ import com.bumptech.glide.Glide
 import com.diegopardo.transformersbattle.databinding.RecyclerViewItemTransformerBinding
 import com.diegopardo.transformersbattle.model.pojo.Transformer
 
-class TransformersAdapter(private val transformerList: MutableList<Transformer>) :
-    RecyclerView.Adapter<TransformersAdapter.ViewHolder>() {
+class TransformersAdapter(
+    private val transformerList: MutableList<Transformer>,
+    private val onItemClickListener: OnItemClickListener,
+) : RecyclerView.Adapter<TransformersAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: RecyclerViewItemTransformerBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -33,6 +35,9 @@ class TransformersAdapter(private val transformerList: MutableList<Transformer>)
         viewHolder.binding.transformerSpeed.text = transformer.speed.toString()
         viewHolder.binding.transformerEndurance.text = transformer.endurance.toString()
         viewHolder.binding.transformerFirepower.text = transformer.firepower.toString()
+        viewHolder.binding.root.setOnClickListener {
+            onItemClickListener.onItemClicked(transformer)
+        }
     }
 
     override fun getItemCount() = transformerList.size
@@ -42,4 +47,7 @@ class TransformersAdapter(private val transformerList: MutableList<Transformer>)
         notifyItemInserted(transformerList.size)
     }
 
+    interface OnItemClickListener {
+        fun onItemClicked(transformer: Transformer)
+    }
 }
