@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TransformersBattle</string>
+
+    <string name="transformer_item_overall_rating">Overall Rating:</string>
+    <string name="transformer_item_strength">Strength:</string>
+    <string name="transformer_item_intelligence">Intelligence:</string>
+    <string name="transformer_item_speed">Speed:</string>
+    <string name="transformer_item_endurance">Endurance:</string>
+    <string name="transformer_item_firepower">Firepower:</string>
 </resources>

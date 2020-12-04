@@ -1,30 +1,34 @@
 package com.diegopardo.transformersbattle.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.diegopardo.transformersbattle.R
+import com.diegopardo.transformersbattle.databinding.RecyclerViewItemTransformerBinding
 import com.diegopardo.transformersbattle.model.pojo.Transformer
 
 class TransformersAdapter(private val transformerList: MutableList<Transformer>) :
     RecyclerView.Adapter<TransformersAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.transformer_name)
-
-    }
+    class ViewHolder(val binding: RecyclerViewItemTransformerBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.recycler_view_item_transformer, viewGroup, false)
-
-        return ViewHolder(view)
+        val binding = RecyclerViewItemTransformerBinding.inflate(
+            LayoutInflater.from(viewGroup.context),
+            viewGroup,
+            false
+        )
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.textView.text = transformerList[position].name
+        val transformer = transformerList[position]
+        viewHolder.binding.transformerName.text = transformer.name
+        viewHolder.binding.transformerOverallRating.text = transformer.getOverallRating().toString()
+        viewHolder.binding.transformerStrength.text = transformer.strength.toString()
+        viewHolder.binding.transformerIntelligence.text = transformer.intelligence.toString()
+        viewHolder.binding.transformerSpeed.text = transformer.speed.toString()
+        viewHolder.binding.transformerEndurance.text = transformer.endurance.toString()
+        viewHolder.binding.transformerFirepower.text = transformer.firepower.toString()
     }
 
     override fun getItemCount() = transformerList.size
