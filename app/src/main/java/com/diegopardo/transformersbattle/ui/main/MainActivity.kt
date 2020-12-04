@@ -4,16 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.diegopardo.transformersbattle.R
 import com.diegopardo.transformersbattle.application.TransformersBattleApplication
+import com.diegopardo.transformersbattle.ui.fragment.TransformersFragment
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as TransformersBattleApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
+                    .replace(R.id.container, TransformersFragment.newInstance())
                     .commitNow()
         }
     }

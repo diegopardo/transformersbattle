@@ -2,7 +2,7 @@ package com.diegopardo.transformersbattle.di.component
 
 import com.diegopardo.transformersbattle.di.ActivityScoped
 import com.diegopardo.transformersbattle.di.module.ContentModule
-import com.diegopardo.transformersbattle.ui.main.MainFragment
+import com.diegopardo.transformersbattle.ui.fragment.TransformersFragment
 import dagger.Subcomponent
 
 @ActivityScoped
@@ -13,5 +13,5 @@ interface ContentComponent {
         fun create(): ContentComponent
     }
 
-    fun inject(mainFragment: MainFragment)
+    fun inject(transformersFragment: TransformersFragment)
 }
