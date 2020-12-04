@@ -12,7 +12,9 @@ import com.diegopardo.transformersbattle.application.TransformersBattleApplicati
 import com.diegopardo.transformersbattle.databinding.FragmentCreateOrEditTransformerBinding
 import com.diegopardo.transformersbattle.di.viewmodel.ViewModelFactory
 import com.diegopardo.transformersbattle.model.dto.TransformerDTO
+import com.diegopardo.transformersbattle.model.pojo.Transformer
 import com.diegopardo.transformersbattle.ui.viewmodel.TransformersViewModel
+import com.diegopardo.transformersbattle.utils.ARG_TRANSFORMER
 import javax.inject.Inject
 import kotlin.math.roundToInt
 
@@ -47,15 +49,35 @@ class CreateOrEditTransformerFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        init()
+        val transformer = arguments?.getParcelable(ARG_TRANSFORMER) as Transformer?
+        init(transformer)
     }
 
-    private fun init() {
+    private fun init(transformer: Transformer?) {
+        transformer?.let {
+            binding.createOrEditName.setText(transformer.name)
+            if (transformer.team == "A") {
+                binding.createOrEditTeamAutobots.isChecked = true
+                binding.createOrEditTeamDecepticons.isChecked = false
+            } else {
+                binding.createOrEditTeamAutobots.isChecked = false
+                binding.createOrEditTeamDecepticons.isChecked = true
+            }
+            binding.createOrEditStrength.value = transformer.strength.toFloat()
+            binding.createOrEditIntelligence.value = transformer.intelligence.toFloat()
+            binding.createOrEditSpeed.value = transformer.speed.toFloat()
+            binding.createOrEditEndurance.value = transformer.endurance.toFloat()
+            binding.createOrEditRank.value = transformer.rank.toFloat()
+            binding.createOrEditCourage.value = transformer.courage.toFloat()
+            binding.createOrEditFirepower.value = transformer.firepower.toFloat()
+            binding.createOrEditSkill.value = transformer.skill.toFloat()
+        }
+
         binding.createOrEditSaveBtn.setOnClickListener {
             // TODO: Validations
 
             val transformer = TransformerDTO(
-                id = null,
+                id = transformer?.id,
                 name = binding.createOrEditName.text.toString(),
                 team = if (binding.createOrEditTeamAutobots.isChecked) "A" else "D",
                 strength = binding.createOrEditStrength.value.roundToInt(),

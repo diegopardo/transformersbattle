@@ -17,6 +17,7 @@ import com.diegopardo.transformersbattle.di.viewmodel.ViewModelFactory
 import com.diegopardo.transformersbattle.model.pojo.Transformer
 import com.diegopardo.transformersbattle.ui.adapter.TransformersAdapter
 import com.diegopardo.transformersbattle.ui.viewmodel.TransformersViewModel
+import com.diegopardo.transformersbattle.utils.ARG_TRANSFORMER
 import javax.inject.Inject
 
 
@@ -85,7 +86,10 @@ class TransformersFragment : Fragment(), TransformersAdapter.OnItemClickListener
     }
 
     override fun onItemClicked(transformer: Transformer) {
-        CreateOrEditTransformerFragment.newInstance()
-            .show(parentFragmentManager, CreateOrEditTransformerFragment.tag())
+        val bundle = Bundle()
+        bundle.putParcelable(ARG_TRANSFORMER, transformer)
+        val editTransformerFragment = CreateOrEditTransformerFragment.newInstance()
+        editTransformerFragment.arguments = bundle
+        editTransformerFragment.show(parentFragmentManager, CreateOrEditTransformerFragment.tag())
     }
 }
