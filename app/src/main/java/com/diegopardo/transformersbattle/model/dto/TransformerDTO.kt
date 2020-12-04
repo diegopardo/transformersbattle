@@ -3,9 +3,9 @@ package com.diegopardo.transformersbattle.model.dto
 import com.diegopardo.transformersbattle.model.pojo.Transformer
 
 data class TransformerDTO(
-    val id: Int,
+    val id: String,
     val name: String,
-    val team: Transformer.Team,
+    val team: String,
     val strength: Int,
     val intelligence: Int,
     val speed: Int,
