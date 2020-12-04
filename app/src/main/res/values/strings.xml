@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">TransformersBattle</string>
 
+    <string name="transformer_menu_action_add">Add transformer</string>
+    <string name="transformer_menu_action_battle">Start a battle</string>
+
     <string name="transformer_item_overall_rating">Overall Rating:</string>
     <string name="transformer_item_strength">Strength:</string>
     <string name="transformer_item_intelligence">Intelligence:</string>

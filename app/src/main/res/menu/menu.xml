@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/ic_add"
+        android:title="@string/transformer_menu_action_add"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/action_settings"
+        android:icon="@drawable/ic_battle"
+        android:title="@string/transformer_menu_action_battle"
+        app:showAsAction="ifRoom"/>
+
+</menu>
