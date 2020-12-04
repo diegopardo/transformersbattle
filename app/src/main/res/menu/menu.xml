@@ -7,7 +7,7 @@
         android:title="@string/transformer_menu_action_add"
         app:showAsAction="ifRoom"/>
 
-    <item android:id="@+id/action_settings"
+    <item android:id="@+id/action_battle"
         android:icon="@drawable/ic_battle"
         android:title="@string/transformer_menu_action_battle"
         app:showAsAction="ifRoom"/>
