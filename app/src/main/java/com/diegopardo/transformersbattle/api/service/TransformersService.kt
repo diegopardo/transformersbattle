@@ -16,9 +16,6 @@ interface TransformersService {
     @PUT("/transformers")
     suspend fun updateTransformer(@Body transformer: TransformerDTO): Response<TransformerDTO>
 
-    @GET("/transformers/{transformerId}")
-    suspend fun getTransformer()
-
     @DELETE("/transformers/{transformerId}")
     suspend fun deleteTransformer(@Path("transformerId") transformerId: String): Response<Void>
 }
