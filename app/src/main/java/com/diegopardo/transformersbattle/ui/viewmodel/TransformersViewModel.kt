@@ -6,17 +6,22 @@ import androidx.lifecycle.viewModelScope
 import com.diegopardo.transformersbattle.model.dto.TransformerDTO
 import com.diegopardo.transformersbattle.model.pojo.Transformer
 import com.diegopardo.transformersbattle.repository.TransformersRepository
+import com.diegopardo.transformersbattle.ui.helper.BattleHelper
+import com.diegopardo.transformersbattle.utils.SingleLiveEvent
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
-class TransformersViewModel  @Inject constructor(
-    private val transformersRepository: TransformersRepository
+class TransformersViewModel @Inject constructor(
+    private val transformersRepository: TransformersRepository,
+    private val battleHelper: BattleHelper,
 ) : ViewModel() {
 
     var transformerList: MutableLiveData<ArrayList<Transformer>> = MutableLiveData()
     var newTransformer: MutableLiveData<Transformer> = MutableLiveData()
     var updatedTransformer: MutableLiveData<Transformer> = MutableLiveData()
     var deletedTransformer: MutableLiveData<Transformer> = MutableLiveData()
+    var battleResults: SingleLiveEvent<BattleHelper.BattleResults> = SingleLiveEvent()
 
     fun getTransformers() {
         viewModelScope.launch {
@@ -65,6 +70,16 @@ class TransformersViewModel  @Inject constructor(
             } else {
                 // TODO: Inform user about error
             }
+        }
+    }
+
+    fun wageBattle() {
+        transformerList?.value?.let {
+            val results = battleHelper.wageBattle(it)
+            results.destroyedTransformers.forEach { transformer ->
+                transformer.id?.let { transformerId -> deleteTransformer(transformerId) }
+            }
+            battleResults.postValue(results)
         }
     }
 }

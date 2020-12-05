@@ -2,6 +2,7 @@ package com.diegopardo.transformersbattle.di.module
 
 import android.app.Application
 import android.content.Context
+import com.diegopardo.transformersbattle.ui.helper.BattleHelper
 import com.diegopardo.transformersbattle.utils.PreferencesHelper
 import dagger.Module
 import dagger.Provides
@@ -18,4 +19,8 @@ class AppModule(private val application: Application) {
     @Provides
     fun providePreferencesHelper(context: Context): PreferencesHelper =
         PreferencesHelper(context)
+
+    @Singleton
+    @Provides
+    fun provideBattleHelper(): BattleHelper = BattleHelper()
 }

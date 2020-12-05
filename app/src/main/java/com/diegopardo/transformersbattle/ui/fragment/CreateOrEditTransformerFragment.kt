@@ -56,7 +56,7 @@ class CreateOrEditTransformerFragment : DialogFragment() {
     private fun init(transformer: Transformer?) {
         transformer?.let {
             binding.createOrEditName.setText(transformer.name)
-            if (transformer.team == "A") {
+            if (transformer.isAutobot()) {
                 binding.createOrEditTeamAutobots.isChecked = true
                 binding.createOrEditTeamDecepticons.isChecked = false
             } else {

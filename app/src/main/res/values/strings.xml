@@ -4,8 +4,10 @@
     <string name="transformer_menu_action_add">Add transformer</string>
     <string name="transformer_menu_action_battle">Start a battle</string>
 
-    <string name="transformer_item_cancel">Cancel</string>
-    <string name="transformer_item_save">Save</string>
+    <string name="transformer_dialog_cancel">Cancel</string>
+    <string name="transformer_dialog_save">Save</string>
+    <string name="transformer_dialog_ok">OK</string>
+
     <string name="transformer_item_name">Name:</string>
     <string name="transformer_item_team">Team:</string>
     <string name="transformer_item_team_autobots">Autobots</string>
@@ -21,4 +23,10 @@
     <string name="transformer_item_skill">Skill:</string>
 
     <string name="transformers_battle_start">Wage a battle!</string>
+    <plurals name="transformers_battle_results_battle_count">
+        <item quantity="one">1 battle</item>
+        <item quantity="other">%d battles</item>
+    </plurals>
+    <string name="transformers_battle_results_battle_winner">Winning team (%1$s): %2$s</string>
+    <string name="transformers_battle_results_battle_loser">Survivors from the losing team (%1$s): %2$s</string>
 </resources>

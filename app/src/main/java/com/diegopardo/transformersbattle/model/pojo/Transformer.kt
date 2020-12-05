@@ -16,7 +16,7 @@ data class Transformer(
     val firepower: Int,
     val skill: Int,
     val team_icon: String?,
-) : Parcelable {
+) : Parcelable, Comparable<Transformer> {
 //    enum class Team(val abbreviation: String) {
 //        AUTOBOT("A"),
 //        DECEPTICON("B"),
@@ -86,5 +86,26 @@ data class Transformer(
             0,
             ""
         )
+    }
+
+    override fun compareTo(other: Transformer): Int {
+        if (other is Transformer) {
+            if (rank > other.rank) return 1
+            if (rank < other.rank) return -1
+            return 0
+        }
+        return  1
+    }
+
+    fun isAutobot(): Boolean {
+        return team.equals("A")
+    }
+
+    fun isDecepticon(): Boolean {
+        return !isAutobot()
+    }
+
+    override fun toString(): String {
+        return name.toString()
     }
 }
