@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import com.diegopardo.transformersbattle.databinding.FragmentBattleBinding
 
-class BattleFragment : Fragment() {
+class BattleFragment : DialogFragment() {
 
     companion object {
         fun newInstance() = BattleFragment()
@@ -20,5 +20,17 @@ class BattleFragment : Fragment() {
                               savedInstanceState: Bundle?): View {
         binding = FragmentBattleBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
+    }
+
+    fun init() {
+        binding.battleCancelBtn.setOnClickListener { dismiss() }
+        binding.battleStartBtn.setOnClickListener {
+
+        }
     }
 }

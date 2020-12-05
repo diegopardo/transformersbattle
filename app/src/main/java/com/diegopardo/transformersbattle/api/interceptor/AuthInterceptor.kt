@@ -17,7 +17,6 @@ class AuthInterceptor @Inject constructor(
         val request = chain.request()
         val newRequest = request.newBuilder().addHeader("Accept", "*/*")
             .addHeader("Authorization", "Bearer ${preferencesHelper.token}").build()
-            //.addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0cmFuc2Zvcm1lcnNJZCI6Ii1NTmVuSzVVdDd4SUF1NWxvTkdMIiwiaWF0IjoxNjA3MDM1ODY3fQ.etm5dwr34JF8GsDof9B4erRqxj7eOJ3iptfHVV_VB3w").build()
         return chain.proceed(newRequest)
     }
 

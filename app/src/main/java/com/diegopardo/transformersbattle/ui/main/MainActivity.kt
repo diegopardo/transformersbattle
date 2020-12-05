@@ -36,11 +36,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         R.id.action_battle -> {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, BattleFragment.newInstance())
-                .addToBackStack(BattleFragment.tag())
-                .commit()
-            true
+            BattleFragment.newInstance()
+                .show(supportFragmentManager, BattleFragment.tag())
             true
         }
 

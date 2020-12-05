@@ -99,5 +99,7 @@ class CreateOrEditTransformerFragment : DialogFragment() {
 
             dismiss()
         }
+
+        binding.createOrEditCancelBtn.setOnClickListener { dismiss() }
     }
 }

@@ -21,7 +21,7 @@ class TransformersViewModel  @Inject constructor(
     fun getTransformers() {
         viewModelScope.launch {
             val transformers = transformersRepository.getTransformers()
-            if (!transformers.isNullOrEmpty()) {
+            if (transformers != null) {
                 transformerList.postValue(transformers as ArrayList<Transformer>)
             } else {
                 // TODO: Inform user about error
