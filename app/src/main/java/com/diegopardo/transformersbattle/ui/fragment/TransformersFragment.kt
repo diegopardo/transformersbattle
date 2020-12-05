@@ -75,7 +75,11 @@ class TransformersFragment : Fragment(), TransformersAdapter.OnItemClickListener
             (binding.transformersRecyclerView.adapter as TransformersAdapter).notifyTransformerUpdated(it)
         })
         transformersViewModel.deletedTransformer.observe(viewLifecycleOwner, {
-            (binding.transformersRecyclerView.adapter as TransformersAdapter).notifyTransformerDeleted(swipedPosition)
+            if (swipedPosition >= 0)
+                (binding.transformersRecyclerView.adapter as TransformersAdapter).notifyTransformerDeleted(swipedPosition)
+            else
+                (binding.transformersRecyclerView.adapter as TransformersAdapter).notifyDataSetChanged()
+            swipedPosition = -1
         })
     }
 
