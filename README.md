@@ -13,7 +13,9 @@ From Android Studio:
 2. Run app in the selected device
 
 ## Assumptions
-1. The AllSpark token never expires so there is no need to implement a token auto-renew feature
+* Authentication is done implicitly and there is no need of user intervention
+* The AllSpark token never expires so there is no need to implement a token auto-renew feature
+* Actions such as listing, creating, updating or deleting are immediately fired to the REST API server as there is no local storage or synchronization feature
 
 ## Implementation description
 * Application is configured to use Dagger as dependency injection framework
@@ -33,7 +35,8 @@ From Android Studio:
 7. If offline mode supported, then add data sync process
 8. Implement TODOs that are all around
 9. Evaluate more edge cases
-10. Aggressive testing coverage: more test cases for battle logic, UI tests
+10. Data input validations
+11. Aggressive testing coverage: more test cases for battle logic, UI tests
 
 ## Author
 This project was created by:
