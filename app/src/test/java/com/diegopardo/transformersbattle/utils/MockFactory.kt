@@ -62,7 +62,6 @@ fun getTransformers(): MutableList<Transformer> {
         Transformer("4", "Transformer 4", "D", 1, 2, 3, 4, 5, 6, 7, 8, "http://icon.url")
     var transformer5 =
         Transformer("5", "Transformer 5", "A", 1, 2, 3, 4, 5, 6, 7, 8, "http://icon.url")
-    var transformers =
     return mutableListOf(transformer1, transformer2, transformer3, transformer4, transformer5)
 }
 
@@ -72,4 +71,14 @@ fun getUpdatedTransformer(): Transformer { // With value for id and team_icon
 
 fun getBattleResults(): BattleHelper.BattleResults {
     return BattleHelper.BattleResults(1, 1, 0, mutableListOf(), mutableListOf(), mutableListOf(), mutableListOf(), mutableListOf())
+}
+
+fun getTransformersForBattle(): MutableList<Transformer> {
+    var transformer1 =
+        Transformer("1", "Soundwave", "D", 8,9,2,6,7,5,6,10, "http://icon.url")
+    var transformer2 =
+        Transformer("2", "Bluestreak", "A", 6,6,7,9,5,2,9,7, "http://icon.url")
+    var transformer3 =
+        Transformer("3", "Hubcap", "A", 4,4,4,4,4,4,4,4, "http://icon.url")
+    return mutableListOf(transformer1, transformer2, transformer3)
 }
