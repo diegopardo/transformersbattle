@@ -7,3 +7,8 @@ Clone this repository and import into **Android Studio**
 git clone git@github.com:diegopardo/transformersbattle.git
 ```
 
+## Execution
+From Android Studio:
+1. Configure emulator or plug in a real device making sure the API level is 19 or above
+2. Run app in the selected device
+
