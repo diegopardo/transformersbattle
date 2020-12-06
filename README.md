@@ -20,4 +20,4 @@ From Android Studio:
 
 ## Author
 This project was created by:
-* [Diego Pardo](diepardo@gmail.com)
+* [Diego Pardo]<diepardo@gmail.com>
