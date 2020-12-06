@@ -35,10 +35,8 @@ class TransformersRepositoryTest {
 
     //mocks
     private val transformersResponse = getTransformersResponse()
-
     private val transformerDTOToCreate = getTransformerDTOToCreate()
     private val createdTransformerResponse = createdTransformerResponse()
-
     private val transformerDTOToUpdate = getTransformerDTOToUpdate()
     private val updatedTransformerResponse = updatedTransformerResponse()
 

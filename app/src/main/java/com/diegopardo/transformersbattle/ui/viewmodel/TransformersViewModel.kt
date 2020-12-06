@@ -10,14 +10,13 @@ import com.diegopardo.transformersbattle.ui.helper.BattleHelper
 import com.diegopardo.transformersbattle.utils.SingleLiveEvent
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 class TransformersViewModel @Inject constructor(
     private val transformersRepository: TransformersRepository,
     private val battleHelper: BattleHelper,
 ) : ViewModel() {
 
-    var transformerList: MutableLiveData<ArrayList<Transformer>> = MutableLiveData()
+    var transformerList: MutableLiveData<MutableList<Transformer>> = MutableLiveData()
     var newTransformer: MutableLiveData<Transformer> = MutableLiveData()
     var updatedTransformer: MutableLiveData<Transformer> = MutableLiveData()
     var deletedTransformer: MutableLiveData<Transformer> = MutableLiveData()
@@ -27,7 +26,7 @@ class TransformersViewModel @Inject constructor(
         viewModelScope.launch {
             val transformers = transformersRepository.getTransformers()
             if (transformers != null) {
-                transformerList.postValue(transformers as ArrayList<Transformer>)
+                transformerList.postValue(transformers.toMutableList())
             } else {
                 // TODO: Inform user about error
             }

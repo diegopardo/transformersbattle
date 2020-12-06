@@ -14,7 +14,7 @@ class BattleHelper @Inject constructor() {
     private lateinit var autobots: MutableList<Transformer>
     private lateinit var decepticons: MutableList<Transformer>
 
-    fun wageBattle(transformerList: ArrayList<Transformer>): BattleResults {
+    fun wageBattle(transformerList: MutableList<Transformer>): BattleResults {
         fightCount = 0
         destroyedAutobotCount = 0
         destroyedDecepticonCount = 0
@@ -102,14 +102,14 @@ class BattleHelper @Inject constructor() {
         )
     }
 
-    private fun getAutobots(transformerList: ArrayList<Transformer>): MutableList<Transformer> {
+    private fun getAutobots(transformerList: MutableList<Transformer>): MutableList<Transformer> {
         val autobots =
             transformerList?.filter { transformer -> transformer.isAutobot() } as MutableList<Transformer>
         autobots.sortDescending()
         return autobots
     }
 
-    private fun getDecepticons(transformerList: ArrayList<Transformer>): MutableList<Transformer> {
+    private fun getDecepticons(transformerList: MutableList<Transformer>): MutableList<Transformer> {
         var decepticons =
             transformerList?.filter { transformer -> transformer.isDecepticon() } as MutableList<Transformer>
         decepticons.sortDescending()
