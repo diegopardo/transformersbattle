@@ -16,6 +16,12 @@ From Android Studio:
 1. The AllSpark token never expires so there is no need to implement a token auto-renew feature
 
 ## Implementation description
+Application is configured to use Dagger as dependency injection framework. It doesn't include any
+database engine such as Room or SQLlite as there is no local storage other than the SharedPreferences.
+Retrofit is used to query the REST API, and the AllSpak token is appended to every HTTP request taking
+advantage of the okhttp3.Interceptor interface. The selected architectural pattern is MVVM so the view
+logic and the business logic are decoupled. JUnit and Mockito for unit testing. User Interface layouts
+using some Material Design elements.
 
 ## Known issues and enhancements
 1. Sometimes team icon images won't load either with Glide or Picasso
