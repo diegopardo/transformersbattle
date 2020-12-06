@@ -41,7 +41,6 @@ class BattleHelper @Inject constructor() {
                 (decepticonFighter.name.equals("Optimus Prime") || decepticonFighter.name.equals("Predaking"))
             ) {
                 transformerList?.forEach {
-                    //it.id?.let { transformerId -> deleteTransformer(transformerId) }
                     destroyedTransformers.add(it)
                 }
                 autobots.clear()
