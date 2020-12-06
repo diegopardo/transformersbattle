@@ -24,6 +24,7 @@ From Android Studio:
 * The selected architectural pattern is MVVM so the viewlogic and the business logic are decoupled
 * JUnit and Mockito for unit testing
 * User Interface layoutsusing some Material Design elements
+* App consists of a single main activity with 3 fragments
 
 ## Known issues and enhancements
 1. Sometimes team icon images won't load either with Glide or Picasso
